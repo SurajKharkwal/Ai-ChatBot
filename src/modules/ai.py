@@ -8,7 +8,7 @@ import time
 
 class AI:
     def __init__(self):
-        genai.configure(api_key="") #your api keys 
+        genai.configure(api_key="AIzaSyBwzOtsCqcxorIsyitmgpyPce76T8NshTg")
         self.model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
         pygame.init()

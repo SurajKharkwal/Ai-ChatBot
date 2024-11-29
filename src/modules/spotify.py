@@ -6,11 +6,11 @@ class SpotifyPlayer:
     def __init__(self):
         # Initialize Spotify API client
         self.sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
-            client_id="",
-            client_secret="",
-            redirect_uri="",
-            scope=""
-        ))# fill your credential
+            client_id="cbbe9f028819469f8f5a3ca7d06e8bf8",
+            client_secret="c3b525e7dddb4b55b2a6e9383909feed",
+            redirect_uri="http://localhost:8080/",
+            scope="user-modify-playback-state user-read-playback-state user-read-currently-playing"
+        ))
 
     def play_song(self, song_name=None):
         try:
