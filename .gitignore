@@ -1,0 +1,24 @@
+
+# Virtual Environment
+ai-env/
+
+# Python Bytecode Files
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# IDE and editor folders
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Other OS-specific files
+.DS_Store
+Thumbs.db
