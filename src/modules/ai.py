@@ -1,14 +1,16 @@
-
 from gtts import gTTS
 import os
 import google.generativeai as genai
-import tempfile
 import pygame
 import time
+from dotenv import dotenv_values
+
 
 class AI:
     def __init__(self):
         genai.configure(api_key="AIzaSyBwzOtsCqcxorIsyitmgpyPce76T8NshTg")
+        config = dotenv_values(".env") 
+        genai.configure(api_key=config["GEMINI_API_KEY"]) #your api keys 
         self.model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
         pygame.init()

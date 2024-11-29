@@ -3,22 +3,19 @@ import speech_recognition as sr
 class SpeechToText:
     def __init__(self):
         self.r = sr.Recognizer()
+    def audioDevice (self):
+        """List all available audio input devices."""
+        devices = sr.Microphone.list_microphone_names()
+        if devices:
+            print("Available audio devices:")
+            for index, name in enumerate(devices):
+                print(f"{index}: {name}")
+        else:
+            print("No audio devices found.")
 
-    def listener(self, timeout=5):
+    def listener(self,device_index=1, timeout=5):
         try:
             print("Listening...")
-
-            # Check and list available microphones
-            mic_list = sr.Microphone.list_microphone_names()
-            print("Available microphones:")
-            for i, mic_name in enumerate(mic_list):
-                print(f"{i}: {mic_name}")
-
-            # Ensure the correct device_index is used (adjust if needed)
-            device_index = 0  # Change to the correct index based on your setup
-            print(f"Using microphone at index {device_index}: {mic_list[device_index]}")
-
-            # Use the selected microphone
             with sr.Microphone(device_index=device_index) as source:
                 self.r.adjust_for_ambient_noise(source)
                 audio = self.r.listen(source, timeout=timeout)
