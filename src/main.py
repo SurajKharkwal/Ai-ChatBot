@@ -1,15 +1,18 @@
 
-from modules.stt import SpeechToText
 from modules.ai import AI
-from modules.spotify import SpotifyPlayer
+from modules.player import SimpleMusicPlayer
+from modules.stt import SpeechToText
 
 speech_to_text = SpeechToText()
 ai = AI()
-spotify = SpotifyPlayer()
+player = SimpleMusicPlayer()
+
+speech_to_text.audioDevice()
 
 ai.speak_text("AI is initialized.")
 
 while True:
+    print("Listening for commands...")
     text = speech_to_text.listener(timeout=3)
     print(f"Recognized text: {text}")
     
@@ -22,25 +25,14 @@ while True:
         ai.speak_text("Goodbye!")
         break
 
-    elif "play next song" in command or "next song" in command:
-        ai.speak_text("Skipping to the next song.")
-        spotify.next_song()
-
-    elif "play previous song" in command or "previous song" in command:
-        ai.speak_text("Going back to the previous song.")
-        spotify.previous_song()
-
-    elif "pause song" in command or "pause music" in command:
-        ai.speak_text("Pausing the song.")
-        spotify.pause_song()
-
-    elif "play song" in command:
-        song_name = command.replace("play song", "").strip()
-        if song_name:
-            ai.speak_text(f"Playing {song_name}.")
-            spotify.play_song(song_name)
+    elif "play" in command:
+        # Extract song name after the command "play"
+        song_name = command.replace("play", "").strip()
+        if song_name:  # Ensure there is a song name
+            player.run(song_name)
         else:
-            ai.speak_text("Please specify the song name.")
-
+            ai.speak_text("Please provide a song name.")
     else:
-        ai.speak(text)
+        print(f"Generating ...{text}")
+        ai.speak(text)  # Repeat the recognized text
+
