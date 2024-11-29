@@ -25,7 +25,10 @@ This project is an AI-powered chatbot that uses speech-to-text and text-to-speec
     After installation, you can run the project with:
 
     ```bash
-    python src/main.py
+    
+   python3 src/main.py 2>/dev/null
+
+
 
     ```
 
