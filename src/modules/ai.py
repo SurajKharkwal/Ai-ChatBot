@@ -8,6 +8,7 @@ from dotenv import dotenv_values
 
 class AI:
     def __init__(self):
+        genai.configure(api_key="GEMINI_API_KEY")
         config = dotenv_values(".env") 
         genai.configure(api_key=config["GEMINI_API_KEY"]) #your api keys 
         self.model = genai.GenerativeModel(model_name="gemini-1.5-flash")

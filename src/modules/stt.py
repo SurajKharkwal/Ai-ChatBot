@@ -13,7 +13,7 @@ class SpeechToText:
         else:
             print("No audio devices found.")
 
-    def listener(self,device_index=4, timeout=5):
+    def listener(self,device_index=1, timeout=5):
         try:
             print("Listening...")
             with sr.Microphone(device_index=device_index) as source:
